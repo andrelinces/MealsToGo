@@ -41,14 +41,10 @@ const Section = styled.View`
 `;
 
 const SectionEnd = styled.View`
-    flex: 0.1,
+    flex: 1;
     flex-direction: row;
     justify-content: flex-end;
 `;
-
-// const Open = styled(SvgXml)`
-//     flex-direction: row;
-// `;
 
 export const RestaurantInfoCard = ( {restaurant = {} }) => {
     const {
@@ -77,11 +73,9 @@ export const RestaurantInfoCard = ( {restaurant = {} }) => {
              
              ))}
            </Rating>
-           {/* <SectionEnd> </SectionEnd> error*/} 
-           <SvgXml xml={open} width={20} height={20} />
-            
-            
-           
+            <SectionEnd>
+                <SvgXml xml={open} width={20} height={20} />
+            </SectionEnd>
            </Section>
            <Address> {address} </Address>
           </Info>
