@@ -77,7 +77,7 @@ export const RestaurantInfoCard = ( {restaurant = {} }) => {
              
              ))}
            </Rating>
-           {/* <SectionEnd> </SectionEnd> */}
+           {/* <SectionEnd> </SectionEnd> error*/} 
            <SvgXml xml={open} width={20} height={20} />
             
             
