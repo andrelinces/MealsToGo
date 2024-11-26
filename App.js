@@ -10,27 +10,47 @@ import { Text, View } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { Button } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import {Ionicons} from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator();
 
+const TAB_ICON = {
+  Restaurants: "restaurant",
+  Map: "map",
+  Settings: "settings"
+};
+
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+
+  return {
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+    tabBarActiveTintColor: "tomato", // Active tab color
+    tabBarInactiveTintColor: "gray", // Inactive tab color
+  };
+};
+
 function MyTabs() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Restaurants" component={RestaurantsScreen} Ionicons={"Home"} />
-      <Tab.Screen name="Maps" component={MapsScreen} />
+    <Tab.Navigator
+      screenOptions={createScreenOptions}
+    >
+      <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+      <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
 }
 
-function MapsScreen() {
+function MapScreen() {
   const navigation = useNavigation();
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Maps Screen </Text>
-      <Button onPress={() => navigation.navigate('Settings')}>Go to Home</Button>
+      <Text>Map Screen </Text>
+      <Button onPress={() => navigation.navigate('Settings')}>Go to Settings</Button>
     </View>
   );
 }
@@ -41,12 +61,10 @@ function SettingsScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Settings Screen</Text>
-      <Button onPress={() => navigation.navigate('Home')}>Go to Home</Button>
+      <Button onPress={() => navigation.navigate('Restaurant')}>Go to Restaurant</Button>
     </View>
   );
 }
-
-//testing navigatio - tab bar
 
 import {
 useFonts as useOswald,
@@ -60,10 +78,6 @@ import {
 
 export default function App() {
 
-  <NavigationContainer>
-  <MyTabs />
-  </NavigationContainer>
-
 const [oswaldLoaded] = useOswald({
   Oswald_400Regular
 })
@@ -75,21 +89,14 @@ const [latodLoaded] = useLato({
 if (!oswaldLoaded || !latodLoaded) {
   return null;
 }
-<>
-    <ThemeProvider theme={theme}>
-    <RestaurantsScreen />
-    </ThemeProvider>
-    
-    <ExpoStatusBar style="auto" />
-    </>
+  
   return (
     
     <>
     <ThemeProvider theme={theme}>
-     {/* <RestaurantsScreen /> */}
-
      <NavigationContainer>
-     <MyTabs />
+        <MyTabs />
+        
      </NavigationContainer>
 
     </ThemeProvider>
@@ -99,3 +106,4 @@ if (!oswaldLoaded || !latodLoaded) {
     
   )
 };
+
