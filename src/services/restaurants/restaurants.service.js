@@ -13,13 +13,14 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
 
 export const restaurantTransform = ({ results = [] }) => {
     const mappedResults = results.map((restaurant) => {
+        // console.log("Mapped Results1=", mappedResults);
         return {
             ...restaurant,
             isOpenNow: restaurant.open_hours && restaurant.opening_hours.open_now,
             isClosedTemporarily: restaurant.business_status === "ClOSED_TEMPORARILY",
         };
     });
-    console.log(mappedResults);
+    // console.log("Mapped Results2=", mappedResults);
     return camelize(mappedResults);
 };
 

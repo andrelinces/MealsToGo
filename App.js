@@ -10,6 +10,7 @@ import { Text, View } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { Button } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import DebugRestaurants from './debugRestaurants';
 
 import {Ionicons} from '@expo/vector-icons';
 
@@ -73,12 +74,12 @@ function SettingsScreen() {
 import {
 useFonts as useOswald,
 Oswald_400Regular,
-} from '@expo-google-fonts/oswald'
+} from '@expo-google-fonts/oswald';
 
 import {
   useFonts as useLato,
   Lato_400Regular,
-  } from '@expo-google-fonts/lato'
+  } from '@expo-google-fonts/lato';
 
 export default function App() {
 
@@ -111,4 +112,12 @@ if (!oswaldLoaded || !latodLoaded) {
     
   )
 };
+
+// export default function App() {
+//   return (
+//     <RestaurantContextProvider>
+//       {/* <DebugRestaurants /> */}
+//     </RestaurantContextProvider>
+//   );
+// }
 
