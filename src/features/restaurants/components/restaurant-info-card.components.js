@@ -24,7 +24,7 @@ import {
 
 export const RestaurantInfoCard = ( {restaurant = {} }) => {
     const {
-        name = 'Some Restaurant',
+        name = "Some Restaurant",
         icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         photos = [
             "https://picsum.photos/seed/picsum/200/300"
@@ -41,7 +41,7 @@ export const RestaurantInfoCard = ( {restaurant = {} }) => {
         <RestaurantCard elevation={5} >
           <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
           <Info>
-           <Text variant="label"> </Text>
+           <Text variant="label">{name} </Text>
            <Section>
            <Rating>
              {ratingArray.map(() => (
