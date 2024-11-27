@@ -10,7 +10,11 @@ import { Text, View } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { Button } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {Ionicons} from '@expo/vector-icons'
+
+import {Ionicons} from '@expo/vector-icons';
+
+// import { restaurantsRequest } from './src/services/restaurants/restaurants.service';
+import { RestaurantContextProvider } from './src/services/restaurants/restaurants.context';
 
 const Tab = createBottomTabNavigator();
 
@@ -94,13 +98,14 @@ if (!oswaldLoaded || !latodLoaded) {
     
     <>
     <ThemeProvider theme={theme}>
-     <NavigationContainer>
-        <MyTabs />
-        
-     </NavigationContainer>
 
+      {/* <RestaurantContextProvider> */}
+      <NavigationContainer>
+          <MyTabs />
+      </NavigationContainer>
+     {/* </RestaurantContextProvider> */}
+     
     </ThemeProvider>
-    
     <ExpoStatusBar style="auto" />
     </>
     
