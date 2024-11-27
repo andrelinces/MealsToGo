@@ -5,7 +5,7 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 import styled from "styled-components";
 import { Spacer } from "../components/spacer/spacer.components";
 
-// import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 const SafeArea = styled(SafeAreaView)`
 flex: 1;
@@ -30,8 +30,8 @@ const RestaurantList = styled(FlatList).attrs({
 ``;
 
 export const RestaurantsScreen = () => {
-  // const restaurantContext = useContext(restaurantContext);
-  // console.log(restaurantContext);
+  const restaurantContext = useContext(RestaurantsContext);
+  console.log(restaurantContext);
   return (
     <SafeArea>
         <SearchContainer>
@@ -39,8 +39,8 @@ export const RestaurantsScreen = () => {
         </SearchContainer>
 
         <RestaurantList
-          data={[ {name: 1}, {name: 2}, {name: 3}, {name: 4}, {name: 5}, {name: 6}, {name: 7}, {name: 8} ]}
-          // data={restaurantContext.restaurants}
+          // data={[ {name: 1}, {name: 2}, {name: 3}, {name: 4}, {name: 5}, {name: 6}, {name: 7}, {name: 8} ]}
+          data={restaurantContext.restaurants}
           
           renderItem={() => (
           
