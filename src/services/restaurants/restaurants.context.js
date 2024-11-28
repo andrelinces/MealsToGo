@@ -11,7 +11,9 @@ export const RestaurantsContextProvider = ({ children }) => {
     const [error, setError] = useState(null);
 
     const retrieveRestaurants = () => {
+        
         setIsLoading(true);
+        
         setTimeout(() => {
             restaurantsRequest()
             .then(restaurantsTransform)
@@ -32,7 +34,6 @@ export const RestaurantsContextProvider = ({ children }) => {
     }, []);
 
     // console.log("RestaurantsContext =",restaurants);
-
   return (
     
     <RestaurantsContext.Provider

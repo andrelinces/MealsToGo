@@ -13,8 +13,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import {Ionicons} from '@expo/vector-icons';
 
-// import { restaurantsRequest } from './src/services/restaurants/restaurants.service';
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context';
+
+import { LocationContextProvider } from './src/services/location/location.context';
 
 const Tab = createBottomTabNavigator();
 
@@ -97,26 +98,17 @@ if (!oswaldLoaded || !latodLoaded) {
   return (
     
     <>
-    <ThemeProvider theme={theme}>
-
-      <RestaurantsContextProvider>
-      <NavigationContainer>
-          <MyTabs />
-      </NavigationContainer>
-     </RestaurantsContextProvider>/
-     
-    </ThemeProvider>
-    <ExpoStatusBar style="auto" />
+      <ThemeProvider theme={theme}>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+        
+            <NavigationContainer>
+              <MyTabs />
+            </NavigationContainer>
+          </RestaurantsContextProvider>/
+        </LocationContextProvider>
+      </ThemeProvider>
+      <ExpoStatusBar style="auto" />
     </>
-    
-  )
+  );
 };
-
-// export default function App() {
-//   return (
-//     <RestaurantContextProvider>
-//       {/* <DebugRestaurants /> */}
-//     </RestaurantContextProvider>
-//   );
-// }
-
