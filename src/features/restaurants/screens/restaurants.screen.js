@@ -52,10 +52,6 @@ export const RestaurantsScreen = () => {
           />
         </LoadingContainer>
       )}
-
-        {/* <SearchContainer>
-          <Searchbar elevation={3}/>
-        </SearchContainer> */}
         <Search />
         <RestaurantList
           
