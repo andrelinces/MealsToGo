@@ -33,23 +33,6 @@ export const LocationContextProvider = ({ children }) => {
       });
   }, [keyword]);
 
-  // if (!searchKeyword.length) {
-  //   // don't do anything
-  //   return;
-  // }
-  //     locationRequest(searchKeyword.toLowerCase())
-  //       .then(locationTransform)
-  //       .then((result) => {
-  //         setIsLoading(false);
-  //         setLocation(result);
-  //         console.log(result);
-  //       })
-  //       .catch((err) => {
-  //         setIsLoading(false);
-  //         setError(err);
-  //       });
-  //   };
-
   return (
     <LocationContext.Provider
       value={{
