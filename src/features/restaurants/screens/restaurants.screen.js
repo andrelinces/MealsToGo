@@ -18,6 +18,7 @@ import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 import { Text } from "react-native-paper";
+
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
   margin-top: ${StatusBar.currentHeight}px;
@@ -49,8 +50,8 @@ import { useNavigation } from "@react-navigation/native";
 
 export const RestaurantsScreen = () => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
-  const navigation22 = useNavigation();
-  console.log("navigation= ", navigation22.navigate);
+  const navigation = useNavigation();
+  console.log("navigation= ", navigation.navigate);
 
   return (
     <SafeArea>
@@ -66,7 +67,11 @@ export const RestaurantsScreen = () => {
           // console.log("Item From RestaurantScreen =",item.name);
           return (
             <TouchableOpacity
-              onPress={() => navigation22.navigate("RestaurantDetail")}
+              onPress={() =>
+                navigation.navigate("RestaurantDetail", {
+                  restaurant: item,
+                })
+              }
             >
               <Spacer position="bottom" size="large">
                 <RestaurantInfoCard restaurant={item} />

@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Text } from "react-native";
-
 import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
+
+import { RestaurantDetailScreen } from "../../features/restaurants/screens/restaurant-detail.screen";
 
 import {
   createStackNavigator,
@@ -10,10 +10,6 @@ import {
 } from "@react-navigation/stack";
 
 const RestaurantStack = createStackNavigator();
-
-const RestaurantDetailScreen = () => {
-  return <Text>Restaurant Detail</Text>;
-};
 
 export const RestaurantsNavigator = () => {
   return (
@@ -29,10 +25,10 @@ export const RestaurantsNavigator = () => {
       />
       <RestaurantStack.Screen
         name="RestaurantDetail"
-        component={() => <Text Restaurant Detail></Text>}
+        component={RestaurantDetailScreen}
         options={{
           //   presentation: "modal", // Enables the modal style
-          //   headerShown: false, // Optional: Hides the header for the modal
+          headerShown: false, // Optional: Hides the header for the modal
           ...TransitionPresets.ModalPresentationIOS, // Ensures iOS-like modal transition
         }}
       />
