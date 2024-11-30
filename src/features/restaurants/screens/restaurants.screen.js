@@ -6,6 +6,7 @@ import {
   View,
   Pressable,
   TouchableOpacity,
+  StyleSheet,
 } from "react-native";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.components";
 import styled from "styled-components";
@@ -55,12 +56,28 @@ export const RestaurantsScreen = () => {
 
   return (
     <SafeArea>
-      {isLoading && (
-        <LoadingContainer>
-          <Loading size={50} animating={true} color={MD2Colors.blue300} />
-        </LoadingContainer>
-      )}
       <Search />
+      {isLoading && (
+        // <LoadingContainer>
+        //   <Loading size={50} animating={true} color={MD2Colors.blue300} />
+        // </LoadingContainer>
+        <View style={styles.container}>
+          {/* Top Activity Indicator */}
+          <View style={styles.top}>
+            <ActivityIndicator size={50} color={MD2Colors.blue300} />
+          </View>
+
+          {/* Center Activity Indicator */}
+          <View style={styles.center}>
+            <ActivityIndicator size={50} color={MD2Colors.blue300} />
+          </View>
+
+          {/* Bottom Activity Indicator */}
+          <View style={styles.bottom}>
+            <ActivityIndicator size={50} color={MD2Colors.blue300} />
+          </View>
+        </View>
+      )}
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
@@ -84,3 +101,25 @@ export const RestaurantsScreen = () => {
     </SafeArea>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "space-between", // Distributes the children evenly
+    alignItems: "center", // Center horizontally
+  },
+  top: {
+    flex: 1,
+    justifyContent: "flex-start",
+    paddingTop: 10, // Adjust as needed
+  },
+  center: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  bottom: {
+    flex: 1,
+    justifyContent: "flex-end",
+    paddingBottom: -100, // Adjust as needed
+  },
+});

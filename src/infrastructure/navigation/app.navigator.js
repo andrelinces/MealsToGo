@@ -10,6 +10,8 @@ import { RestaurantsNavigator } from "./restaurants.navigator";
 
 import { Ionicons } from "@expo/vector-icons";
 
+import { MapScreen } from "../../features/map/screens/map.screen";
+
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
@@ -30,18 +32,18 @@ const createScreenOptions = ({ route }) => {
   };
 };
 
-function MapScreen() {
-  const navigation = useNavigation();
+// function MapScreen() {
+//   const navigation = useNavigation();
 
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Map Screen </Text>
-      <Button onPress={() => navigation.navigate("Settings")}>
-        Go to Settings
-      </Button>
-    </View>
-  );
-}
+//   return (
+//     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+//       <Text>Map Screen </Text>
+//       <Button onPress={() => navigation.navigate("Settings")}>
+//         Go to Settings
+//       </Button>
+//     </View>
+//   );
+// }
 
 function SettingsScreen() {
   const navigation = useNavigation();
@@ -64,7 +66,11 @@ function MyTabs() {
         component={RestaurantsNavigator}
         options={{ headerShown: false }}
       />
-      <Tab.Screen name="Map" component={MapScreen} />
+      <Tab.Screen
+        name="Map"
+        component={MapScreen}
+        options={{ headerShown: false }}
+      />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );

@@ -17,52 +17,6 @@ import { RestaurantsContextProvider } from "./src/services/restaurants/restauran
 
 import { LocationContextProvider } from "./src/services/location/location.context";
 
-// const Tab = createBottomTabNavigator();
-
-// const TAB_ICON = {
-//   Restaurants: "restaurant",
-//   Map: "map",
-//   Settings: "settings",
-// };
-
-// const createScreenOptions = ({ route }) => {
-//   const iconName = TAB_ICON[route.name];
-
-//   return {
-//     tabBarIcon: ({ size, color }) => (
-//       <Ionicons name={iconName} size={size} color={color} />
-//     ),
-//     tabBarActiveTintColor: "tomato", // Active tab color
-//     tabBarInactiveTintColor: "gray", // Inactive tab color
-//   };
-// };
-
-// function MapScreen() {
-//   const navigation = useNavigation();
-
-//   return (
-//     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-//       <Text>Map Screen </Text>
-//       <Button onPress={() => navigation.navigate("Settings")}>
-//         Go to Settings
-//       </Button>
-//     </View>
-//   );
-// }
-
-// function SettingsScreen() {
-//   const navigation = useNavigation();
-
-//   return (
-//     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-//       <Text>Settings Screen</Text>
-//       <Button onPress={() => navigation.navigate("Restaurant")}>
-//         Go to Restaurant
-//       </Button>
-//     </View>
-//   );
-// }
-
 import {
   useFonts as useOswald,
   Oswald_400Regular,
