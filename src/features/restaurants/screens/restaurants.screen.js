@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   FlatList,
   View,
-  Pressable,
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
@@ -18,7 +17,7 @@ import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
-import { Text } from "react-native-paper";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -50,9 +49,10 @@ const LoadingContainer = styled.View`
 import { useNavigation } from "@react-navigation/native";
 
 export const RestaurantsScreen = () => {
-  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
   const navigation = useNavigation();
-  console.log("navigation= ", navigation.navigate);
+  // console.log("favourites= ", favourites);
 
   return (
     <SafeArea>
