@@ -11,6 +11,12 @@ export const Search = () => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
+  const [isFavouritesToggled, setIsFavouritesToggled] = useState(false);
+
+  const onFavouritesToggle = () => {
+    setIsFavouritesToggled(!isFavouritesToggled);
+  };
+
   useEffect(() => {
     setSearchKeyword(keyword);
   }, [keyword]);
@@ -18,11 +24,18 @@ export const Search = () => {
   return (
     <SearchContainer>
       <Searchbar
+        icon={isFavouritesToggled ? "heart" : "heart-outline"}
+        // onIconPress={onFavouritesToggle }
+        onIconPress={() => {
+          console.log("Search bar icon clicked!");
+          onFavouritesToggle(); // Toggle the state
+        }}
         elevation={3}
         placeholder="Search for a location"
         value={searchKeyword}
         onSubmitEditing={() => {
           search(searchKeyword);
+          console.log("onIconPress", onIconPress);
         }}
         onChangeText={(text) => {
           setSearchKeyword(text);
