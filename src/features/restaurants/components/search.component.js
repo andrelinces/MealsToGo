@@ -41,7 +41,7 @@ export const Search = () => {
         value={searchKeyword}
         onSubmitEditing={() => {
           search(searchKeyword);
-          console.log("onIconPress", onIconPress);
+          // console.log("onIconPress", onIconPress);
         }}
         onChangeText={(text) => {
           setSearchKeyword(text);
