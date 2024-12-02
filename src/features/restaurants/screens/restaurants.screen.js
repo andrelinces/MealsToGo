@@ -50,19 +50,13 @@ const LoadingContainer = styled.View`
 
 import { useNavigation } from "@react-navigation/native";
 
-//testing....
-
-// const [isFavouritesToggled, setIsToggled] = useState(false);
-const onFavouritesToggle = () => {
-  setIsToggled(!isToggled);
-};
-
 export const RestaurantsScreen = () => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
   const { favourites } = useContext(FavouritesContext);
   const [isToggled, setIsToggled] = useState(false);
   const navigation = useNavigation();
-  // console.log("favourites= ", favourites);
+
+  const [isFavouritesVisible, setIsFavouritesVisible] = useState(false);
 
   return (
     <SafeArea>
@@ -70,7 +64,7 @@ export const RestaurantsScreen = () => {
         isFavouritesToggled={isToggled}
         onFavouritesToggle={() => setIsToggled(!isToggled)}
       />
-      isToggled && <FavouritesBar favourites={favourites} />
+      {isToggled && <FavouritesBar favourites={favourites} />}
       {isLoading && (
         // <LoadingContainer>
         //   <Loading size={50} animating={true} color={MD2Colors.blue300} />

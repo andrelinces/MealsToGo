@@ -3,6 +3,9 @@ import styled from "styled-components/native";
 import { Searchbar } from "react-native-paper";
 import { LocationContext } from "../../../services/location/location.context";
 
+import { FavouritesBar } from "../../../services/favourites/favourites-bar.components";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
+
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
@@ -11,10 +14,17 @@ export const Search = () => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
-  const [isFavouritesToggled, setIsFavouritesToggled] = useState(false);
+  const [isFavouritesVisible, setIsFavouritesVisible] = useState(false);
+  const { favourites } = useContext(FavouritesContext);
 
-  const onFavouritesToggle = () => {
-    setIsFavouritesToggled(!isFavouritesToggled);
+  const handleIconPress = () => {
+    console.log("Search bar icon clicked!", favourites);
+
+    if (favourites.length !== 0) {
+      setIsFavouritesVisible((prev) => !prev);
+    } else {
+      console.log("No favourites to display.");
+    }
   };
 
   useEffect(() => {
@@ -24,12 +34,8 @@ export const Search = () => {
   return (
     <SearchContainer>
       <Searchbar
-        icon={isFavouritesToggled ? "heart" : "heart-outline"}
-        // onIconPress={onFavouritesToggle }
-        onIconPress={() => {
-          console.log("Search bar icon clicked!");
-          onFavouritesToggle(); // Toggle the state
-        }}
+        icon={isFavouritesVisible ? "heart" : "heart-outline"}
+        onIconPress={handleIconPress}
         elevation={3}
         placeholder="Search for a location"
         value={searchKeyword}
@@ -41,6 +47,9 @@ export const Search = () => {
           setSearchKeyword(text);
         }}
       />
+      {isFavouritesVisible && favourites.length !== 0 && (
+        <FavouritesBar favourites={favourites} />
+      )}
     </SearchContainer>
   );
 };
