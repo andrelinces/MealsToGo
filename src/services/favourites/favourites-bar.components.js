@@ -3,12 +3,14 @@ import { ScrollView, Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { Spacer } from "../../features/restaurants/components/spacer/spacer.components";
 import { CompactRestaurantInfo } from "../../features/restaurants/components/restaurant/compact-restaurant-info.component";
+import { useNavigation } from "@react-navigation/native";
 
 const FavouritesWrapper = styled.View`
   padding: 10px;
 `;
 
-export const FavouritesBar = ({ favourites, onNavigate }) => {
+export const FavouritesBar = ({ favourites }) => {
+  const navigation = useNavigation();
   if (!favourites.length) {
     return null;
   }
@@ -25,7 +27,7 @@ export const FavouritesBar = ({ favourites, onNavigate }) => {
             <Spacer key={key} position="left" size="medium">
               <TouchableOpacity
                 onPress={() =>
-                  onNavigate("RestaurantDetail", {
+                  navigation.navigate("RestaurantDetail", {
                     restaurant,
                   })
                 }

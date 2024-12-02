@@ -19,6 +19,9 @@ import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
+
+import { useNavigation } from "@react-navigation/native";
+
 import { FavouritesBar } from "../../../services/favourites/favourites-bar.components";
 
 const SafeArea = styled(SafeAreaView)`
@@ -48,8 +51,6 @@ const LoadingContainer = styled.View`
   left: "50%";
 `;
 
-import { useNavigation } from "@react-navigation/native";
-
 export const RestaurantsScreen = () => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
   const { favourites } = useContext(FavouritesContext);
@@ -64,7 +65,6 @@ export const RestaurantsScreen = () => {
         isFavouritesToggled={isToggled}
         onFavouritesToggle={() => setIsToggled(!isToggled)}
       />
-      {isToggled && <FavouritesBar favourites={favourites} />}
       {isLoading && (
         // <LoadingContainer>
         //   <Loading size={50} animating={true} color={MD2Colors.blue300} />
