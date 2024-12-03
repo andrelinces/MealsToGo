@@ -2,7 +2,7 @@ import React from "react";
 
 //Navigation - tab bar
 import { Text, View } from "react-native";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { Button } from "@react-navigation/elements";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -31,19 +31,6 @@ const createScreenOptions = ({ route }) => {
     tabBarInactiveTintColor: "gray", // Inactive tab color
   };
 };
-
-// function MapScreen() {
-//   const navigation = useNavigation();
-
-//   return (
-//     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-//       <Text>Map Screen </Text>
-//       <Button onPress={() => navigation.navigate("Settings")}>
-//         Go to Settings
-//       </Button>
-//     </View>
-//   );
-// }
 
 function SettingsScreen() {
   const navigation = useNavigation();
@@ -76,8 +63,4 @@ function MyTabs() {
   );
 }
 
-export const AppNavigator = () => (
-  <NavigationContainer>
-    <MyTabs />
-  </NavigationContainer>
-);
+export const AppNavigator = () => <MyTabs />;
