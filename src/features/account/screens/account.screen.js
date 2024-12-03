@@ -26,7 +26,7 @@ export const AccountScreen = () => {
         </AuthButton>
         <Spacer size="large">
           <AuthButton
-            icon={"lock-open-outline"}
+            icon={"email"}
             buttonColor={colors.brand.primary}
             mode="contained"
             onPress={() => navigation.navigate("Register")}
