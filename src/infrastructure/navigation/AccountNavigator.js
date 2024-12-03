@@ -43,6 +43,6 @@ export const AccountNavigator = () => (
       options={{ headerShown: false }}
     />
     <Stack.Screen name="Login" component={LoginScreen} />
-    <Stack.Screen name="Regiser" component={RegisterScreen} />
+    <Stack.Screen name="Register" component={RegisterScreen} />
   </Stack.Navigator>
 );
