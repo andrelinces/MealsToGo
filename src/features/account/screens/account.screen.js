@@ -2,6 +2,7 @@ import React from "react";
 import { colors } from "../../../infrastructure/theme/colors";
 import { Spacer } from "../../restaurants/components/spacer/spacer.components";
 import { useNavigation } from "@react-navigation/native";
+import { Text } from "../../restaurants/components/typography/text.component";
 import {
   AccountBackground,
   AccountContainer,
@@ -15,6 +16,7 @@ export const AccountScreen = () => {
   return (
     <AccountBackground>
       <AccountCover />
+      <Text>Meals To Go</Text>
       <AccountContainer>
         <AuthButton
           icon={"lock-open-outline"}
