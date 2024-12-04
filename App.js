@@ -4,11 +4,6 @@ import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from ".";
 
-import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
-
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -42,22 +37,6 @@ const auth = getAuth(app);
 export { auth };
 
 export default function App() {
-  // Authentication with firebase
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // const auth = getAuth();
-  // signInWithEmailAndPassword(auth, "test@test.com", "123456")
-  //   .then((userCredential) => {
-  //     // Signed in
-  //     const user = userCredential.user;
-  //     console.log("User logged:", user.email);
-  //     // ...
-  //   })
-  //   .catch((error) => {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //   });
-
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -70,20 +49,11 @@ export default function App() {
     return null;
   }
 
-  //testing firebase
-  // if (!isAuthenticated) return null;
-
   return (
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <FavouritesContextProvider>
-            <LocationContextProvider>
-              <RestaurantsContextProvider>
-                <Navigation />
-              </RestaurantsContextProvider>
-            </LocationContextProvider>
-          </FavouritesContextProvider>
+          <Navigation />
         </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />

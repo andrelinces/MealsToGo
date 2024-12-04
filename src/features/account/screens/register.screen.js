@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-// import { colors } from "../../../infrastructure/theme/colors";
+import { colors } from "../../../infrastructure/theme/colors";
 import {
   AccountBackground,
   AccountCover,
@@ -13,7 +13,7 @@ import { Spacer } from "../../restaurants/components/spacer/spacer.components";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { useNavigation } from "@react-navigation/native";
 import { isLoading } from "expo-font";
-import { ActivityIndicator, colors } from "react-native-paper";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
 export const RegisterScreen = () => {
   const [email, setEmail] = useState("");
@@ -60,18 +60,17 @@ export const RegisterScreen = () => {
           </ErrorContainer>
         )}
         <Spacer size="large">
-          {!isLoading ? (
-            <AuthButton
-              icon="email"
-              mode="contained"
-              buttonColor={colors.brand.primary}
-              onPress={() => onRegister(email, password, repeatedPassword)}
-            >
-              Register
-            </AuthButton>
-          ) : (
-            <ActivityIndicator animating={true} color={colors.blue300} />
-          )}
+          !isLoading ? (
+          <AuthButton
+            icon="email"
+            mode="contained"
+            buttonColor={colors.brand.primary}
+            onPress={() => onRegister(email, password, repeatedPassword)}
+          >
+            Register
+          </AuthButton>
+          );
+          {/* <ActivityIndicator animating={true} color={MD2Colors.blue300} />  */}
         </Spacer>
       </AccountContainer>
       <Spacer size="large">

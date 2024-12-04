@@ -7,7 +7,6 @@ import {
 import { auth } from "../../../App";
 
 import { loginRequest } from "./authentication.service";
-import { onLog } from "firebase/app";
 
 export const AuthenticationContext = createContext();
 

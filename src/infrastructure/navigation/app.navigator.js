@@ -7,11 +7,15 @@ import { Button } from "@react-navigation/elements";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { RestaurantsNavigator } from "./restaurants.navigator";
+import { SettingsNavigator } from "./settings.navigator";
 
 import { Ionicons } from "@expo/vector-icons";
 
 import { MapScreen } from "../../features/map/screens/map.screen";
-import { AuthenticationContext } from "../../services/authentication/authentication.context";
+
+import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
+import { LocationContextProvider } from "../../services/location/location.context";
+import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,60 +37,6 @@ const createScreenOptions = ({ route }) => {
   };
 };
 
-// const onLogout = async () => {
-//   setIsLoading(true);
-//   try {
-//     await signOut(auth);
-//     setUser(null);
-//   } catch (err) {
-//     setError(err.message);
-//   } finally {
-//     setIsLoading(false);
-//   }
-// };
-
-// const Settings = () => {
-//   const { onLogout } = useContext(AuthenticationContext);
-//   return (
-//     <View>
-//       <Text>Settings</Text>
-
-//       <Button title="logout" onPress={() => onLogout()}>
-//         logout
-//       </Button>
-//     </View>
-//   );
-// };
-
-// const Settings = () => {
-//   const { onLogout } = useContext(AuthenticationContext);
-//   return (
-//     // <SafeArea>
-//     <View>
-//       <Text>Settings</Text>
-//       <Button title="logout" onPress={() => onLogout()} />
-//       {/* </SafeArea>  */}
-//     </View>
-//   );
-// };
-
-function Settings() {
-  const navigation = useNavigation();
-  const { onLogout } = useContext(AuthenticationContext);
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Settings Screen</Text>
-      <Button onPress={() => navigation.navigate("Restaurants")}>
-        Go to Restaurant
-      </Button>
-
-      <Button title="logout" onPress={() => onLogout()}>
-        Logout
-      </Button>
-    </View>
-  );
-}
-
 function MyTabs() {
   return (
     <Tab.Navigator screenOptions={createScreenOptions}>
@@ -100,9 +50,17 @@ function MyTabs() {
         component={MapScreen}
         options={{ headerShown: false }}
       />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name="Settings" component={SettingsNavigator} />
     </Tab.Navigator>
   );
 }
 
-export const AppNavigator = () => <MyTabs />;
+export const AppNavigator = () => (
+  <FavouritesContextProvider>
+    <LocationContextProvider>
+      <RestaurantsContextProvider>
+        <MyTabs />
+      </RestaurantsContextProvider>
+    </LocationContextProvider>
+  </FavouritesContextProvider>
+);

@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import { Button, TextInput } from "react-native-paper";
 import { Text } from "../../restaurants/components/typography/text.component";
 import { colors } from "../../../infrastructure/theme/colors";
+import { StyleSheet } from "react-native";
 
 export const AccountBackground = styled.ImageBackground.attrs({
   source: require("../../../../assets/home_bg.jpg"),
@@ -44,3 +45,24 @@ export const ErrorContainer = styled.View`
   margin-top: ${(props) => props.theme.space[2]};
   margin-bottom: ${(props) => props.theme.space[2]};
 `;
+
+export const AnimationWrapper = styled.View`
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  top: 30px;
+  padding: ${(props) => props.theme.space[2]};
+`;
+
+export const stylesWatermelonAnimation = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+  },
+  animation: {
+    width: 430, // Adjust as needed
+    height: 430, // Adjust as needed
+  },
+});
