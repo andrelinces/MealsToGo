@@ -50,7 +50,11 @@ function MyTabs() {
         component={MapScreen}
         options={{ headerShown: false }}
       />
-      <Tab.Screen name="Settings" component={SettingsNavigator} />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsNavigator}
+        options={{ headerShown: false }}
+      />
     </Tab.Navigator>
   );
 }

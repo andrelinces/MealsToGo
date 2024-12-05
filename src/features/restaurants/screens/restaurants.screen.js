@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import {
   StatusBar,
   SafeAreaView,
-  FlatList,
   View,
   TouchableOpacity,
   StyleSheet,
@@ -22,7 +21,9 @@ import { FavouritesContext } from "../../../services/favourites/favourites.conte
 
 import { useNavigation } from "@react-navigation/native";
 
-import { FavouritesBar } from "../../../services/favourites/favourites-bar.components";
+import { RestaurantList } from "../components/restaurant-list.styles";
+
+import { FadeInView } from "../components/animations/fade.animation";
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -34,12 +35,6 @@ const RestaurantListContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
 
 const Loading = styled(ActivityIndicator)`
   marginleft: -25px;
@@ -53,11 +48,8 @@ const LoadingContainer = styled.View`
 
 export const RestaurantsScreen = () => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
-  const { favourites } = useContext(FavouritesContext);
   const [isToggled, setIsToggled] = useState(false);
   const navigation = useNavigation();
-
-  const [isFavouritesVisible, setIsFavouritesVisible] = useState(false);
 
   return (
     <SafeArea>
@@ -86,6 +78,7 @@ export const RestaurantsScreen = () => {
           </View>
         </View>
       )}
+
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
@@ -99,7 +92,9 @@ export const RestaurantsScreen = () => {
               }
             >
               <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeInView>
               </Spacer>
             </TouchableOpacity>
           );
