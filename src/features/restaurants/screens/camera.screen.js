@@ -122,6 +122,7 @@ export const CameraScreen = () => {
   }
 
   if (!type) {
+    // Error, Warning: TypeError: Cannot read property 'Type' of undefined
     console.log("Camera type not set, showing loading...", type);
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
