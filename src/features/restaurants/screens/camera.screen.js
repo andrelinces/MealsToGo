@@ -1,3 +1,5 @@
+//testing... internet code, camera doesn't work..
+
 // import React, { useRef, useState, useEffect } from "react";
 // import { Camera } from "expo-camera";
 // import styled from "styled-components/native";
@@ -75,7 +77,7 @@
 //   );
 // };
 
-//testing... mo cod
+//testing... mo cod with internet code.
 
 import React, { useRef, useState, useEffect } from "react";
 import { Camera } from "expo-camera";
