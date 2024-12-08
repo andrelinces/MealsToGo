@@ -1,9 +1,5 @@
 import React, { useContext } from "react";
 
-//Navigation - tab bar
-import { Text, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { Button } from "@react-navigation/elements";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { RestaurantsNavigator } from "./restaurants.navigator";
@@ -37,6 +33,7 @@ const createScreenOptions = ({ route }) => {
   };
 };
 
+// tabs with navigator.
 function MyTabs() {
   return (
     <Tab.Navigator screenOptions={createScreenOptions}>
